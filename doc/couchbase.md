@@ -41,7 +41,9 @@ Formatter:
 -----------
 
 **Key:**
+```
 strtolower{channel}: strtolower{level_name}:md5{uniqid}
+```
 
 **Code:**
 ```php
