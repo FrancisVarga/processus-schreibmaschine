@@ -58,6 +58,7 @@ class CouchbaseHandler extends AbstractProcessingHandler
     {
         $data = $record['formatted'];
         $meta = $data['meta'];
+        unset($data['meta']);
 
         $this->client->insert($meta['key'], $data, $meta['expireTime']);
     }

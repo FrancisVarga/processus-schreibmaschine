@@ -22,11 +22,13 @@ class CouchbaseFormatter implements FormatterInterface
      */
     public function format(array $record)
     {
-        $key = implode(
+        $newLevelName = str_replace(" ", "_", strtolower($record['level_name']));
+        $message      = str_replace(" ", "_", $record['message']);
+        $key          = implode(
             ":",
             array(
                 strtolower($record['channel']),
-                strtolower($record['level_name']),
+                $newLevelName,
                 md5(uniqid(null, true))
             )
         );
@@ -35,13 +37,9 @@ class CouchbaseFormatter implements FormatterInterface
             "key"        => $key,
             "expireTime" => $record['context']['expireTime']
         );
-        $logData        = array(
-            "message" => $record['message'],
-            "context" => $record['context'],
-            "extra"   => $record['extra']
-        );
 
-        $record['value'] = $logData;
+        unset($record['context']['expireTime']);
+        $record['message'] = $message;
 
         return $record;
     }
