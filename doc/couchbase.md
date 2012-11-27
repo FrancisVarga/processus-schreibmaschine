@@ -50,7 +50,7 @@ strtolower{channel}: strtolower{level_name}:md5{uniqid}
 $memId      = implode(":", array($record['channel'], strtolower($record['level_name']), md5(uniqid(null, true))));
 ```
 
-The key generation is very important in this. Sure i can remove channel and level_name it's in the document, it's only a flavor to easy read key structures and prevent collision in the key.
+The key generation is very important in this case. Sure i can remove channel and level_name it's in the document, it's only a flavor to easy read key structures and prevent collision in the keys.
 
 Couchbase 2.0 Views:
 --------------------
@@ -64,6 +64,7 @@ function (doc, meta) {
   }
 }
 ```
+Is only a listing of all your logs by channel.
 
 **View for all your levels**
 ```js
@@ -74,6 +75,7 @@ function (doc, meta) {
   }
 }
 ```
+Is only a listing of all your logs by level.
 
 **View by time**
 ```js
@@ -84,6 +86,9 @@ function (doc, meta) {
   }
 }
 ```
+Listing your logs by date and doc.level you can use **group_level** if you want both or only by date. It's helpful if you want to know in which time and error level was the log.
+
+You can generate much more views for listing your logs!
 
 If you need more info's about views and how to query [Couchbase](http://www.couchbase.com/) here are some helpfully links:
 
