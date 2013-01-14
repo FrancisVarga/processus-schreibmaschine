@@ -18,7 +18,7 @@ class CouchbaseHandler extends AbstractProcessingHandler
 {
 
     /**
-     * @var
+     * @var NoSQLInterface
      */
     private $client;
 
@@ -31,11 +31,10 @@ class CouchbaseHandler extends AbstractProcessingHandler
     {
         if (empty($client)) {
             $client = new ClientJson();
-            $client->setHost("127.0.0.1")
+            $client->setHost('127.0.0.1')
                 ->setPort(11211)
                 ->initClient();
         }
-
         $this->client = $client;
 
         parent::__construct($level, $bubble);
