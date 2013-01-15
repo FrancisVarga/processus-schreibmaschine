@@ -2,7 +2,7 @@
     "name": "processus/schreibmaschine",
     "description": "Logging for PHP 5.3 base on Monolog",
     "keywords": ["log", "logging"],
-    "homepage": "http://github.com/Crowdpark/prcessus-schreibmachine",
+    "homepage": "https://github.com/Crowdpark/processus-schreibmaschine",
     "type": "library",
     "license": "MIT",
     "authors": [
